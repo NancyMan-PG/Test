@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飞虾队 · 技能图谱</title>
+    <style>
+        :root {
+            --bg: #0d0f14;
+            --bg2: #151820;
+            --bg3: #1c2030;
+            --border: #2a2f3e;
+            --text: #e2e8f0;
+            --text2: #94a3b8;
+            --text3: #64748b;
+            --blue: #60a5fa;
+            --blue-dim: rgba(96, 165, 250, 0.12);
+            --green: #34d399;
+            --green-dim: rgba(52, 211, 153, 0.12);
+            --purple: #a78bfa;
+            --purple-dim: rgba(167, 139, 250, 0.12);
+            --orange: #fb923c;
+            --orange-dim: rgba(251, 146, 60, 0.12);
+            --red: #f87171;
+            --red-dim: rgba(248, 113, 113, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+        }
+
+        /* 导航栏 */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(13, 15, 20, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            height: 56px;
+        }
+
+        .nav-brand {
+            font-weight: 700;
+            font-size: 1.1rem;
+            white-space: nowrap;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-brand span {
+            opacity: 0.5;
+        }
+
+        nav a.member-link {
+            white-space: nowrap;
+            text-decoration: none;
+            font-size: 0.85rem;
+            color: var(--text2);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            transition: all 0.2s;
+        }
+
+        nav a.member-link:hover {
+            color: var(--text);
+            background: var(--bg3);
+        }
+
+        .nav-spacer {
+            flex: 1;
+        }
+
+        .nav-badge {
+            white-space: nowrap;
+            font-size: 0.78rem;
+            color: var(--text3);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 0.2rem 0.7rem;
+        }
+
+        /* 主要内容区 */
+        .hero {
+            text-align: center;
+            padding: 5rem 2rem 3.5rem;
+            background: linear-gradient(180deg, #0d1222 0%, var(--bg) 100%);
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-size: 0.78rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--blue);
+            background: var(--blue-dim);
+            border: 1px solid rgba(96, 165, 250, 0.25);
+            padding: 0.35rem 1rem;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, #60a5fa 50%, #34d399 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text2);
+            max-width: 600px;
+            margin: 0 auto 1rem;
+            line-height: 1.8;
+        }
+
+        /* 统计数据 */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 3rem 2rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text3);
+        }
+
+        .stat-value.blue { color: var(--blue); }
+        .stat-value.green { color: var(--green); }
+        .stat-value.purple { color: var(--purple); }
+        .stat-value.orange { color: var(--orange); }
+
+        /* 底部按钮区 */
+        .members {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 3rem 2rem;
+            flex-wrap: wrap;
+        }
+
+        .member-card {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .member-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .member-card.blue {
+            background: var(--blue-dim);
+            color: var(--blue);
+            border-color: rgba(96, 165, 250, 0.25);
+        }
+
+        .member-card.green {
+            background: var(--green-dim);
+            color: var(--green);
+            border-color: rgba(52, 211, 153, 0.25);
+        }
+
+        .member-card.purple {
+            background: var(--purple-dim);
+            color: var(--purple);
+            border-color: rgba(167, 139, 250, 0.25);
+        }
+
+        .member-card.orange {
+            background: var(--orange-dim);
+            color: var(--orange);
+            border-color: rgba(251, 146, 60, 0.25);
+        }
+
+        .member-card.red {
+            background: var(--red-dim);
+            color: var(--red);
+            border-color: rgba(248, 113, 113, 0.25);
+        }
+
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                gap: 2rem;
+            }
+            
+            .stat-value {
+                font-size: 2rem;
+            }
+            
+            nav {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav>
+        <a href="#" class="nav-brand">
+            🦐 飞虾队 <span>·</span> 技能图谱
+        </a>
+        <a href="#" class="member-link">📖 故事</a>
+        <a href="#" class="member-link">🦐 鳌虾</a>
+        <a href="#" class="member-link">🔥 甜虾</a>
+        <a href="#" class="member-link">🦞 龙虾</a>
+        <a href="#" class="member-link">🌾 麦虾</a>
+        <a href="#" class="member-link">🐯 虎虾</a>
+        <a href="#" class="member-link">💡 经验</a>
+        <div class="nav-spacer"></div>
+        <span class="nav-badge">v1.0 · 2026-03-19</span>
+    </nav>
+
+    <!-- 主要内容 -->
+    <div class="hero">
+        <div class="hero-tag">FLYING SHRIMP SQUAD</div>
+        <h1>飞虾队 技能图谱</h1>
+        <p>5只专业虾 · 全栈覆盖投资、情报、内容、知识、运维<br>
+        基于 OpenClaw 构建的实战多Agent协作系统</p>
+    </div>
+
+    <!-- 统计数据 -->
+    <div class="stats">
+        <div class="stat-item">
+            <div class="stat-value blue">5</div>
+            <div class="stat-label">专属智能体</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value green">74</div>
+            <div class="stat-label">技能/任务节点</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value purple">24h</div>
+            <div class="stat-label">全天候运行</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-value orange">~$300</div>
+            <div class="stat-label">月度算力成本</div>
+        </div>
+    </div>
+
+    <!-- 成员卡片 -->
+    <div class="members">
+        <a href="#" class="member-card blue">🦐 鳌虾 · 协调指挥</a>
+        <a href="#" class="member-card green">🔥 甜虾 · 投资写作</a>
+        <a href="#" class="member-card purple">🦞 龙虾 · 国际情报</a>
+        <a href="#" class="member-card orange">🌾 麦虾 · 知识学习</a>
+        <a href="#" class="member-card red">🐯 虎虾 · 国内情报</a>
+    </div>
+</body>
+</html>
